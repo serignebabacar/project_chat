@@ -1,0 +1,39 @@
+
+<%- include('./header') %>
+
+<form action="/" method="post"  class="needs-validation" novalidate>
+
+    <div class="form-group">
+        <label for="nom">Message:</label>
+        <input type="text" class="form-control" id="contenu" placeholder="Entrer un message" name="contenu" required value="<%= item.contenu %>">
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Veuillez entrer le message</div>
+    </div>
+
+    <input type="hidden"  name="id_update" value="<%= item.id %>">
+    <button type="submit" class="btn btn-outline-primary">
+        <i class=""></i>Envoyer
+    </button>
+</form>
+
+<script>
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Get the forms we want to add validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+    </script>
+
+<%- include('./footer') %>
